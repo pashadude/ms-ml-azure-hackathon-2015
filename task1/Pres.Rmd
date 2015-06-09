@@ -1,0 +1,32 @@
+---
+title: "Wheel"
+author: "CoolBigDataFighters"
+date: "06/07/2015"
+output: html_document
+---
+
+Repayed by region distribution:
+
+```{r, echo=TRUE}
+library(ggplot2)
+library(corrplot)
+training_data<-read.csv("t.csv")
+CorMx<-abs(cor(training_data[,-12]))
+Model<-training_data$CarType
+Repayed<-factor(training_data$Repayed)
+Region<-training_data$Region
+qplot(Region,fill=Repayed)
+```
+
+Repayed by model distrib:
+
+```{r, echo=FALSE}
+qplot(Model,fill=Repayed)
+```
+
+Correlation matrix:
+
+```{r, echo=FALSE}
+corrplot(CorMx, method = "color", tl.cex = 0.8)
+```
+
